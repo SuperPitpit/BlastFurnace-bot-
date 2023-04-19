@@ -10,14 +10,12 @@ intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 
-# bot = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-@ bot.event
+@bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
 
-    
 @bot.event
 async def on_message(message):
     print('Message from {0.author}: {0.content}'.format(message))
@@ -34,6 +32,5 @@ async def repeterDeux(ctx, arg1, arg2):
 @bot.command()
 async def repeterMultiple(ctx, *args):
     await ctx.send('{} arguments: {}'.format(len(args), ', '.join(args)))
-
 
 bot.run(TOKEN)
